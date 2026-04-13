@@ -12,6 +12,7 @@ from src.model.factory import chat_model
 class RagService:
     def __init__(self):
         self.vector_store_service = RagVectorStoreService()
+        self.vector_store_service.load_document()       # 加载向量数据库
         self.retriever = self.vector_store_service.get_retriever()
         self.rag_prompt_template = PromptTemplate.from_template(rag_prompts)
         self.chat_model = chat_model

@@ -41,11 +41,12 @@ class RagVectorStoreService:
 
                 # md5 读取失败
                 if md5_hex is None:
-                    logger.warning(f"Failed to calculate MD5 for {file_path}")
+                    logger.warning(f"failed to calculate MD5 for {file_path}")
                     continue
 
                 # 重复上传，跳过该文件
                 if is_repeat_md5_hex(md5_hex):
+                    logger.info(f"file: {file_path} has loaded, md5_hex: {md5_hex}")
                     continue
 
                 # 上传文件至向量数据库
@@ -67,6 +68,7 @@ class RagVectorStoreService:
 
                     # 将该文件标记为已上传
                     save_md5_hex(md5_hex)
+                    logger.info(f"file {file_path}, md5_hex {md5_hex} has been uploaded successfully")
                 except Exception as e:
                     logger.error(f"{file_path} has an error: {e}")
 

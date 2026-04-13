@@ -37,8 +37,8 @@ class ReactAgent:
 
 
 if __name__ == "__main__":
-    agent = ReactAgent()
+    react_agent = ReactAgent()
 
     input_ = "扫地机器人在我所在的地区气温下，有效的保养方式是什么？"
-    for chunk in agent.stream(input_):
+    for chunk in react_agent.stream(input_):
         print(chunk, end='')
